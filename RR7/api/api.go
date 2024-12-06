@@ -183,7 +183,7 @@ func LikeMessage(c *gin.Context) {
 		return
 	}
 
-	err = models.DB.Where("userid = ? AND message_id = ?", user.ID, message.ID).First(&like).Error
+	err = models.DB.Where("user_id = ? AND message_id = ?", user.ID, message.ID).First(&like).Error
 	if err == nil {
 		c.String(http.StatusBadRequest, "已经点赞过！")
 		return
